@@ -34,6 +34,11 @@ body {
 	//font-size: 1em;
 	//line-height: 1.4;
         background-color: #bbc1cc; // Background color grey-blue
+        -moz-user-select: none; 
+        -webkit-user-select: none; 
+        -ms-user-select:none; 
+        user-select:none;
+        -o-user-select:none;
 }
 
 /* Links */
@@ -563,4 +568,50 @@ button[disabled]:hover {
     font-family: 'TCM';
     font-weight: 100;
     font-size: 1em;
+}
+
+#example_popup {
+    position: absolute;
+    width: 370px;
+    height: 480px;
+    background: #ff8080;//#ff5757;
+    border-radius: 5px;
+    left: 35%;
+    top: 18%;
+    //z-index: 1000;
+    visibility: hidden;
+    border: 3px solid #108380;
+}
+
+#example_popup h6, #example_popup p{
+    color: #fff;
+    display: block;
+    margin: 0;
+    padding: 0;
+    padding: 0.5em;
+    font-family: 'TCM';
+    font-weight: 100;
+    font-size: 1em;
+}
+#title {
+    text-align: center;
+}
+/*#example-param{
+    text-decoration: underline;
+    padding: 0;
+}
+p .nospace{
+    padding: 0;
+    margin: 0;
+    font-size: 0.5em;
+    text-decoration: underline;
+}*/
+#example-close {
+    float: right;
+    width: 20px;
+    cursor: pointer;
+}
+#example_popup img{
+    width: 90%;
+    padding-left: 5%;
 }
