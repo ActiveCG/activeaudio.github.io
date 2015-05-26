@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!-- Author: Denisa Skantarova & Sule Serubugo
+		Bachelor Project 
+		Aalborg University - Medialogy
+		2015 
+-->
 <html>
     <head>
         <title>ACTIVE AUDIO</title>
@@ -12,17 +17,15 @@
 	<link rel="stylesheet" href="css/main.css" />
         <link rel="stylesheet" href="css/components.css" />
         
-        <!--<script src="js/GuiController.js"></script>
-        <script src="js/AudioController.js"></script>
-        <script src="js/Component.js"></script>
-        <script src="js/Main.js"></script>-->
-        
         <script src="js/Event.js"></script>
+        <script src="js/Example.js"></script>
         <script src="js/AALModel.js"></script>
         <script src="js/AALView.js"></script>
         <script src="js/AALController.js"></script>
+        <script src="js/Analyzer.js"></script>
         <script src="js/SpeechRecognizer.js"></script>
         <script src="js/AALMain.js"></script>
+        <!--<script src="js/Speech.js"></script>-->
         
         
         <script>
@@ -40,7 +43,7 @@
         
          
         <header id="header">
-            <div class="logo-img"><img src="img/icons/logo2e---.png"/></div>
+            <div class="logo-img"><img src="img/icons/logo.png" alt="logo"/></div>
             <div class="logo">
             <h1>Active Audio</h1>
             <h2>Interactive Visual Sounds</h2>
@@ -51,7 +54,7 @@
 					<a href="#">Edit</a>
 					<div id="sub" class="sub-menu">
 						<ul>
-							<li><a href="#" id="cabs">Connection Wire</a></li>
+							<!--<li><a href="#" id="cabs">Connection Wire</a></li>
                                                         <li class="group"></li>
 							<li><a href="#" id="cut">Cut</a></li>
                                                         <li><a href="#" id="cosc">Copy</a></li>
@@ -61,7 +64,7 @@
 							<li><a href="#">Undo</a></li>
                                                         <li><a href="#">Redo</a></li>
                                                         <li class="group"></li>
-                                                        <li><a href="#" id="cosc">Select All</a></li>
+                                                        <li><a href="#" id="cosc">Select All</a></li>-->
 							<li><a href="#" id="delete">Delete</a></li>
                                                         <li><a href="#" id="clear">Clear</a></li>
 						</ul>
@@ -71,11 +74,11 @@
 					<a href="#">View</a>
 					<div class="sub-menu">
 						<ul>
-							<li><a href="#" id="playL">Play</a></li>
-							<li><a href="#" id="cdel">Analyser</a></li>
-                                                        <li class="group"></li>
+							<li><a href="#" id="playL">Run</a></li>
+							<li><a href="#" id="analyzerL">Analyser</a></li>
+                                                        <!--<li class="group"></li>
 							<li><a href="#" id="cdyc">Tools Panel</a></li>
-							<li><a href="#" id="cgai">Workflow Panel</a>
+							<li><a href="#" id="cgai">Workflow Panel</a></li>-->
 						</ul>
 					</div>	
 				</li>
@@ -83,23 +86,23 @@
 					<a href="#">Examples</a>
 					<div class="sub-menu">
 						<ul>
-							<li><a href="#" id="cbqf">Simple Comb filter</a></li>
-							<li><a href="#" id="cde">Reverb</a></li>
-							<li><a href="#" id="cdyc">Chorus</a></li>
-                                                        <li><a href="#" id="cana">Flanger</a></li>
-                                                         <li class="group"></li>
+							<li><a href="#" id="voice">Using Voice</a></li>
+							<!--<li><a href="#" id="cde">Reverb</a></li>
+							<li><a href="#" id="chorus">Chorus</a></li>-->
+                                                        <li><a href="#" id="flanger">Flanger</a></li>
+                                                         <!--<li class="group"></li>
 							<li><a href="#" id="cgai">Using FFT</a></li>
-							<li><a href="#" id="ccon">Graph Analyzer</a></li>
+							<li><a href="#" id="ccon">Graph Analyzer</a></li>-->
 						</ul>
 					</div>	
 				</li>
                                 <li>
-					<a href="#">About</a>
-					<div class="sub-menu">
+					<a id="about" href="#">About</a>
+					<!--<div class="sub-menu">
 						<ul>
 							<li><a href="#" id="cbqf">Authors</a></li>
 						</ul>
-					</div>	
+					</div>-->	
 				</li>
 			</ul>
 		</nav>
@@ -107,7 +110,7 @@
         </header>
         
         <div id="onoff">
-            <a href="#" id="on-off">Turn On</a>
+            <a href="#" id="on-off">Run</a>
         </div>
         
         
@@ -126,23 +129,25 @@
                             <a class= "headers" href="#">Sources</a>
                                 <div class="sub-tools">
                                     <ul>
-                                        <li><a href="#" id="audio" draggable="false"><img src="img/playbtn.png"></a></li>
-                                        <li><a href="#" id="oscil" draggable="false"><img src="img/oscillator.png"></a></li>
+                                        <li><a href="#" id="audio" draggable="false"><img src="img/icons/playbtn.png" alt="audio source"></a></li>
+                                        <li><a href="#" id="oscil" draggable="false"><img src="img/icons/oscillator.png" alt="oscillator"></a></li>
                                     </ul>
                                 </div>
                             <a class= "headers" href="#">Components</a>
                                 <div class="sub-tools">
                                     <ul>
-                                        <li><a href="#" id="gain" draggable="false"><img src="img/gain.png"></a></li>
-                                        <li><a href="#" id="delay" draggable="false"><img src="img/delay.png"></a></li>
-                                        <li><a href="#" id="add" draggable="false"><img src="img/add.png"></a></li>
-                                        <!--<li><a href="#" id="minus" class="lamp"><img src="img/resistor.png"></a></li>-->
+                                        <li><a href="#" id="gain" draggable="false"><img src="img/icons/gain.png" alt="gain"></a></li>
+                                        <li><a href="#" id="lfogain" draggable="false"><img src="img/icons/lfogain.png" alt="lfo gain"></a></li>
+                                        <li><a href="#" id="delay" draggable="false"><img src="img/icons/delay.png" alt="delay"></a></li>
+                                        <li><a href="#" id="vardelay" draggable="false"><img src="img/icons/variabledelay.png" alt="variable delay"></a></li>
+                                        <li><a href="#" id="add" draggable="false"><img src="img/icons/add.png" alt="plus"></a></li>
                                     </ul>
                                 </div>	
                             <a class= "headers" href="#">Output</a>
                                 <div class="sub-tools">
                                     <ul>
-                                        <li><a href="#" id="speaker" draggable="false"><img src="img/speaker.png"></a></li>  
+                                        <li><a href="#" id="speaker" draggable="false"><img src="img/icons/speaker.png" alt="speaker"></a></li>
+                                        <li><a href="#" id="analyzer" draggable="false"><img src="img/icons/analyzer.png" alt="analyzer"></a></li>
                                     </ul>
                                 </div>
                             <a class= "headers" href="#">Pre-built Components</a>
@@ -179,6 +184,19 @@
             <button id="stopRecBtn">Stop</button>
         </div>
         
+        <div id="example_popup">
+            <div id="example-close">x</div>
+            <h6 id="title">Title</h6>
+            <p id="example-text"></p>
+            <img id="example-img" src="" alt="">
+            <p id="example-text1"></p>
+            <p id="example-text2"></p>
+            <p id="example-text3"></p>
+            <!--<p id="example-param" class="nospace">Parameters:</p>
+            <p id="param1" class="nospace"></p>
+            <p id="param2" class="nospace"></p>
+            <p id="param3" class="nospace"></p>-->
+        </div>
         
     </body>
 </html>
